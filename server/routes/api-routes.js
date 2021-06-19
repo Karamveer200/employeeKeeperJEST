@@ -2,6 +2,8 @@ const controller = require("../controller/employee.controller");
 
 let router = require("express").Router();
 
+const verifyToken = require("./jwt-token-verify");
+
 router.get("/", (req, res) => {
   res.status(200).json("Welcome to the Employee api route");
 });
@@ -16,7 +18,11 @@ router.get("/contacts", controller.getAllEmployees);
 router.get("/contacts/:employee_id", controller.getEmployeeById);
 
 //Update Employee by Id
-router.put("/contacts/:employee_id", controller.updateEmployeeById);
+router.put(
+  "/contacts/:employee_id",
+  verifyToken,
+  controller.updateEmployeeById
+);
 
 //Delete Employee by Id
 router.delete("/contacts/:employee_id", controller.deleteEmployeeById);

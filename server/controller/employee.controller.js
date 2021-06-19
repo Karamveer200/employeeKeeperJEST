@@ -1,6 +1,7 @@
 let employeeModel = require("../mongoDB/model/employee.model");
 const joi = require("@hapi/joi");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const schema = joi.object({
   name: joi.string().required(),
@@ -133,6 +134,17 @@ exports.loginEmployee = async (req, res, next) => {
     if (!validatePassword) {
       return res.status(400).json("Incorrect Password");
     }
+    const jwtToken = jwt.sign(
+      {
+        data: employee,
+      },
+      "jwtSecret",
+      {
+        expiresIn: "1h",
+      }
+    );
+
+    res.header("auth-token", jwtToken);
 
     return res.status(201).json(employee);
   } catch (error) {
