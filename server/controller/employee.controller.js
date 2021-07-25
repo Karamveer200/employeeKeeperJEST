@@ -83,10 +83,11 @@ exports.updateEmployeeById = async (req, res) => {
     const updatedEmployee = await employeeModel.findByIdAndUpdate(
       req.params.employee_id,
       req.body,
-      { useFindAndModify: false }
+      { useFindAndModify: false, new: true }
     );
 
     if (updatedEmployee) {
+      console.log(updatedEmployee);
       return res.status(201).json(updatedEmployee);
     } else {
       return res.status(404).json("Employee with requested Id not found");
@@ -97,7 +98,7 @@ exports.updateEmployeeById = async (req, res) => {
 };
 
 exports.deleteEmployeeById = async (req, res) => {
-  employeeModel
+  await employeeModel
     .findByIdAndDelete(req.params.employee_id)
     .then((result) => {
       if (result) {
@@ -138,7 +139,7 @@ exports.loginEmployee = async (req, res, next) => {
       {
         data: employee,
       },
-      "jwtSecret",
+      process.env.JWT_TOKEN_KEY,
       {
         expiresIn: "1h",
       }

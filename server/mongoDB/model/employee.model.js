@@ -16,6 +16,6 @@ let contactSchema = mongoose.Schema({
 mongoose.pluralize(null); //This avoids above statement
 
 module.exports = employeeModel = mongoose.model(
-  "myEmployee_test",
+  "myEmployee_"+process.env.NODE_ENV,
   contactSchema
 );

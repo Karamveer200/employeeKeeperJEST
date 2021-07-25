@@ -1,0 +1,18 @@
+[
+    {
+        "_id": "60fcdf13bbb1ca3d74babc6e",
+        "name": "laasRavi",
+        "email": "stuasddsnjt@gmail.com",
+        "password": "$2b$10$FNjq6S0mMJ3X1WMzs1rsuuQgCOyW5hmfXnsitCbX7JfAIaOXw2HR.",
+        "date": "2021-07-25T03:48:35.668Z",
+        "__v": 0
+    },
+    {
+        "_id": "60fcf0b5a1143c3920da402c",
+        "name": "laasRavi",
+        "email": "asda@gmail.com",
+        "password": "$2b$10$20wUrKdukAkUmDUDHzOS7eSKhLY7ELUYf1BGkY2YiptFtBVbs2j0S",
+        "date": "2021-07-25T05:03:49.515Z",
+        "__v": 0
+    }
+]
